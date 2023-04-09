@@ -21,7 +21,7 @@
     "build-storybook": "storybook build"
   },
   "lint-staged": {
-    "*": "yarn code:check"
+    "**/*.(ts|tsx|js)": "yarn code:check"
   },
   "dependencies": {
     "clsx": "^1.2.1",
