@@ -11,7 +11,11 @@
     "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix",
     "format": "prettier --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "fix": "yarn type-check && yarn format && yarn lint:fix"
+    "fix": "yarn type-check && yarn format && yarn lint:fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*": "yarn fix"
   },
   "dependencies": {
     "clsx": "^1.2.1",
@@ -33,6 +37,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
