@@ -1,12 +1,11 @@
 import clsx from 'clsx';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary';
   as?: 'button' | 'a';
   size?: 'small' | 'default' | 'large';
   className?: string;
-  icon?: ReactNode;
 }
 
 export const Button = ({
