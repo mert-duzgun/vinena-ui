@@ -16,7 +16,7 @@
     "code:fix": "yarn format:fix && yarn lint:fix",
     "test": "vitest",
     "coverage": "vitest --coverage",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
@@ -55,6 +55,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
     "jsdom": "^21.1.1",
     "lint-staged": "^13.2.1",
     "postcss": "^8.4.21",
