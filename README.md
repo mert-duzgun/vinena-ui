@@ -6,7 +6,7 @@ Vinena UI is a React UI library that provides ready-to-use components for your n
 
 ![Vercel](https://vercelbadge.vercel.app/api/mert-duzgun/vinena-ui)
 
-[Figma](https://www.figma.com/file/zxtzS9qnQXPN2PHs6Q76vN/Vinena-UI?node-id=2%3A8&t=HQL1rGF7w7L5kOxY-1)
+[Figma](https://www.figma.com/file/zxtzS9qnQXPN2PHs6Q76vN/Vinena-UI)
 
 [Examples](https://vinena-ui.netlify.app/)
 
