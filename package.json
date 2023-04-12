@@ -15,7 +15,7 @@
     "code:check": "yarn type-check && yarn format:check && yarn lint:check",
     "code:fix": "yarn format:fix && yarn lint:fix",
     "test": "vitest",
-    "coverage": "vitest --coverage",
+    "test:coverage": "vitest --coverage",
     "prepare": "is-ci || husky install",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
