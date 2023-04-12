@@ -40,7 +40,7 @@ interface IconProps {
   className?: string;
 }
 
-const Icon = ({ name, className }: IconProps) => {
+export const Icon = ({ name, className }: IconProps) => {
   const iconMap: { [key: string]: React.ReactElement } = {
     arrowDown: <ArrowDownIcon />,
     arrowLeft: <ArrowLeftIcon />,
@@ -84,5 +84,3 @@ const Icon = ({ name, className }: IconProps) => {
     </span>
   );
 };
-
-export default Icon;

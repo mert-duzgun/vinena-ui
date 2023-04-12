@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Icon from 'components/Icon/Icon';
+import { Icon } from 'components';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps {
