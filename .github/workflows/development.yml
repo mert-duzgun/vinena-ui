@@ -1,16 +1,16 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests on node 16
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Development workflow
 
 on:
   push:
-    branches: ['main']
+    branches: ['dev']
   pull_request:
-    branches: ['main']
+    branches: ['dev']
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +23,11 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn build
       - run: yarn test
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
