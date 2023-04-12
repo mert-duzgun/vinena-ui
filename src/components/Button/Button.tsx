@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Icon from 'components/Icon/Icon';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps {
@@ -6,6 +7,7 @@ interface ButtonProps {
   as?: 'button' | 'a';
   size?: 'small' | 'default' | 'large';
   className?: string;
+  icon?: string;
 }
 
 export const Button = ({
@@ -14,25 +16,29 @@ export const Button = ({
   variant = 'primary',
   as = 'button',
   size = 'default',
+  icon,
   ...rest
 }: ButtonProps &
   ButtonHTMLAttributes<HTMLButtonElement> &
   AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  let baseStyle, textSize;
+  let baseStyle, textSize, iconStyle;
   switch (size) {
     case 'small':
       baseStyle = 'px-4 py-2';
       textSize = 'text-sm';
+      iconStyle = 'text-[16px]';
       break;
     case 'large':
       baseStyle = 'px-4 py-3.5';
       textSize = 'text-lg';
+      iconStyle = 'text-[24px]';
       break;
     default:
       baseStyle = 'px-4 py-3';
       textSize = 'text-base';
+      iconStyle = 'text-[20px]';
   }
-  const baseStyleClasses = `${baseStyle} inline-flex border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300`;
+  const baseStyleClasses = `${baseStyle} inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300`;
   let colorStyle;
   switch (variant) {
     case 'primary':
@@ -50,13 +56,15 @@ export const Button = ({
   if (as === 'a') {
     return (
       <a className={clsx(classes, 'cursor-pointer')} {...rest}>
-        {children}
+        {icon ? <Icon name={icon} className={iconStyle} /> : null}
+        <span className={clsx({ 'ml-[10px]': icon })}>{children}</span>
       </a>
     );
   } else {
     return (
       <button className={classes} type="button" {...rest}>
-        {children}
+        {icon ? <Icon name={icon} className={iconStyle} /> : null}
+        <span className={clsx({ 'ml-[10px]': icon })}>{children}</span>
       </button>
     );
   }
