@@ -4,7 +4,9 @@
 
 ![Vercel](https://vercelbadge.vercel.app/api/mert-duzgun/vinena-ui)
 
-[Storybook](https://vinena-ui.netlify.app/)
+[Examples](https://vinena-ui.netlify.app/)
+
+[Storybook](https://vinena-ui-storybook.vercel.app/)
 
 ## Project setup
 
