@@ -1,5 +1,11 @@
 # Vinena UI
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/277fae32-7ab1-4f01-8351-12f549d5106c/deploy-status)](https://app.netlify.com/sites/vinena-ui/deploys)
+
+![Vercel](https://vercelbadge.vercel.app/api/mert-duzgun/vinena-ui)
+
+[Storybook](https://vinena-ui.netlify.app/)
+
 ## Project setup
 
 Clone the repository:
