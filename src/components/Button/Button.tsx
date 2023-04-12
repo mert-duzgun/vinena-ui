@@ -25,17 +25,17 @@ export const Button = ({
   switch (size) {
     case 'small':
       baseStyle = 'px-4 py-2';
-      textSize = 'text-sm';
+      textSize = 'text-paragraph-3';
       iconStyle = 'text-[16px]';
       break;
     case 'large':
       baseStyle = 'px-4 py-3.5';
-      textSize = 'text-lg';
+      textSize = 'text-paragraph-1';
       iconStyle = 'text-[24px]';
       break;
     default:
       baseStyle = 'px-4 py-3';
-      textSize = 'text-base';
+      textSize = 'text-paragraph-2';
       iconStyle = 'text-[20px]';
   }
   const baseStyleClasses = `${baseStyle} inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300`;

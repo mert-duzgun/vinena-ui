@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -78,6 +81,75 @@ export default {
         800: '#8A041A',
         900: '#610316',
       },
+    },
+    fontSize: {
+      'heading-1': [
+        '4.5rem',
+        {
+          lineHeight: '110%',
+          letterSpacing: '-0.02em',
+          fontWeight: '800',
+        },
+      ],
+      'heading-2': [
+        '3rem',
+        {
+          lineHeight: '110%',
+          letterSpacing: '-0.01em',
+          fontWeight: '700',
+        },
+      ],
+      'heading-3': [
+        '2rem',
+        {
+          lineHeight: '110%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        },
+      ],
+      'heading-4': [
+        '1.5rem',
+        {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '400',
+        },
+      ],
+      eyebrow: [
+        '1.125rem',
+        {
+          lineHeight: '150%',
+          letterSpacing: '0.04em',
+          fontWeight: '400',
+        },
+      ],
+      'paragraph-1': [
+        '1.125rem',
+        {
+          lineHeight: '150%',
+          letterSpacing: '0.02em',
+          fontWeight: '400',
+        },
+      ],
+      'paragraph-2': [
+        '1rem',
+        {
+          lineHeight: '150%',
+          letterSpacing: '0.02em',
+          fontWeight: '400',
+        },
+      ],
+      'paragraph-3': [
+        '0.875rem',
+        {
+          lineHeight: '150%',
+          letterSpacing: '0.02em',
+          fontWeight: '400',
+        },
+      ],
+    },
+    fontFamily: {
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [],
