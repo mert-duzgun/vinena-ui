@@ -1,5 +1,4 @@
-import { getByTestId } from '@testing-library/dom';
-import { render } from '@testing-library/react';
+import { getByTestId, render } from '@testing-library/react';
 
 import Icon from './Icon';
 
