@@ -10,6 +10,15 @@ describe('Button', () => {
     await expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should render the secondary large button as "a" with icon correctly', async () => {
+    const { container } = render(
+      <Button as="a" variant="secondary" icon="home" size="large">
+        Click me!
+      </Button>
+    );
+    await expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('renders correctly', () => {
     render(<Button>Click me!</Button>);
     const button = screen.getByRole('button', { name: 'Click me!' });
@@ -36,7 +45,7 @@ describe('Button', () => {
     render(<Button size="small">Click me!</Button>);
     const button = screen.getByRole('button', { name: 'Click me!' });
     expect(button).toHaveClass(
-      'px-4 py-2 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-sm text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
+      'px-4 py-2 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-paragraph-3 text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
     );
   });
 
@@ -44,7 +53,7 @@ describe('Button', () => {
     render(<Button size="large">Click me!</Button>);
     const button = screen.getByRole('button', { name: 'Click me!' });
     expect(button).toHaveClass(
-      'px-4 py-3.5 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-lg text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
+      'px-4 py-3.5 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-paragraph-1 text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
     );
   });
 
