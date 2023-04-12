@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { ArrowDownIcon } from 'components';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps {
@@ -56,6 +57,7 @@ export const Button = ({
   } else {
     return (
       <button className={classes} type="button" {...rest}>
+        <ArrowDownIcon />
         {children}
       </button>
     );
