@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > should render the default button correctly 1`] = `
+<button
+  class="px-4 py-3 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-base text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300"
+  type="button"
+>
+  <span
+    class=""
+  >
+    Click me!
+  </span>
+</button>
+`;

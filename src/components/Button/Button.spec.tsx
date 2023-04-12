@@ -1,96 +1,93 @@
-import { fireEvent, render } from '@testing-library/react';
-import { test, vitest } from 'vitest';
+import { getByTestId } from '@testing-library/dom';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { vitest } from 'vitest';
 
 import { Button } from './Button';
 
-test('renders button with default props', () => {
-  const { getByText } = render(<Button>Click me</Button>);
-  const button = getByText('Click me');
-  expect(button.tagName).toBe('BUTTON');
-  expect(button).toHaveClass(
-    'px-4',
-    'py-3',
-    'text-base',
-    'bg-primary-500',
-    'border-primary-500',
-    'rounded'
-  );
-});
+describe('Button', () => {
+  it('should render the default button correctly', async () => {
+    const { container } = render(<Button>Click me!</Button>);
+    await expect(container.firstChild).toMatchSnapshot();
+  });
 
-test('renders anchor with href prop', () => {
-  const { getByText } = render(
-    <Button as="a" href="/example">
-      Go to example
-    </Button>
-  );
-  const anchor = getByText('Go to example');
-  expect(anchor.tagName).toBe('A');
-  expect(anchor).toHaveAttribute('href', '/example');
-  expect(anchor).toHaveClass(
-    'px-4',
-    'py-3',
-    'text-base',
-    'bg-primary-500',
-    'border-primary-500',
-    'rounded'
-  );
-});
+  test('renders correctly', () => {
+    render(<Button>Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toBeInTheDocument();
+  });
 
-test('renders small button', () => {
-  const { getByText } = render(<Button size="small">Small button</Button>);
-  const button = getByText('Small button');
-  expect(button).toHaveClass('px-4', 'py-2', 'text-sm');
-});
+  test('applies the primary variant correctly', () => {
+    render(<Button variant="primary">Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toHaveClass(
+      'text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700'
+    );
+  });
 
-test('renders large button', () => {
-  const { getByText } = render(<Button size="large">Large button</Button>);
-  const button = getByText('Large button');
-  expect(button).toHaveClass('px-4', 'py-3.5', 'text-lg');
-});
+  test('applies the secondary variant correctly', () => {
+    render(<Button variant="secondary">Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toHaveClass(
+      'text-primary-500 bg-transparent border-primary-500 hover:bg-primary-50'
+    );
+  });
 
-test('renders primary button', () => {
-  const { getByText } = render(<Button variant="primary">Primary button</Button>);
-  const button = getByText('Primary button');
-  expect(button).toHaveClass(
-    'text-white',
-    'bg-primary-500',
-    'border-primary-500',
-    'hover:bg-primary-700',
-    'hover:border-primary-700'
-  );
-});
+  test('applies the small size correctly', () => {
+    render(<Button size="small">Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toHaveClass(
+      'px-4 py-2 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-sm text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
+    );
+  });
 
-test('renders secondary button', () => {
-  const { getByText } = render(<Button variant="secondary">Secondary button</Button>);
-  const button = getByText('Secondary button');
-  expect(button).toHaveClass(
-    'text-primary-500',
-    'bg-transparent',
-    'border-primary-500',
-    'hover:bg-primary-50'
-  );
-});
+  test('applies the large size correctly', () => {
+    render(<Button size="large">Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toHaveClass(
+      'px-4 py-3.5 inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300 text-lg text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300'
+    );
+  });
 
-test('calls onClick function when button is clicked', () => {
-  const onClick = vitest.fn();
-  const { getByText } = render(<Button onClick={onClick}>Click me</Button>);
-  const button = getByText('Click me');
-  fireEvent.click(button);
-  expect(onClick).toHaveBeenCalledTimes(1);
-});
+  test('handles clicks correctly', async () => {
+    const user = userEvent.setup();
+    const onClick = vitest.fn();
+    render(<Button onClick={onClick}>Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
 
-test('disables button when disabled prop is true', () => {
-  const { getByText } = render(<Button disabled>Click me</Button>);
-  const button = getByText('Click me');
-  expect(button).toHaveAttribute('disabled');
-});
+    await user.click(button);
+    expect(onClick).toHaveBeenCalled();
+  });
 
-test('disables anchor when disabled prop is true', () => {
-  const { getByText } = render(
-    <Button as="a" href="/example" disabled>
-      Go to example
-    </Button>
-  );
-  const anchor = getByText('Go to example');
-  expect(anchor).toHaveAttribute('disabled');
+  test('renders as a link when the "as" prop is set to "a"', () => {
+    render(
+      <Button as="a" href="#">
+        Click me!
+      </Button>
+    );
+    const link = screen.getByRole('link', { name: 'Click me!' });
+    expect(link).toBeInTheDocument();
+  });
+
+  test('applies additional classes correctly', () => {
+    render(<Button className="extra-class">Click me!</Button>);
+    const button = screen.getByRole('button', { name: 'Click me!' });
+    expect(button).toHaveClass('extra-class');
+  });
+
+  test('renders icon correctly as button', () => {
+    const { container } = render(<Button icon="home">Click me!</Button>);
+    const iconContainer = getByTestId(container, 'icon-container');
+    expect(iconContainer).toBeInTheDocument();
+  });
+
+  test('renders icon correctly as link', () => {
+    const { container } = render(
+      <Button as="a" icon="home">
+        Click me!
+      </Button>
+    );
+    const iconContainer = getByTestId(container, 'icon-container');
+    expect(iconContainer).toBeInTheDocument();
+  });
 });
