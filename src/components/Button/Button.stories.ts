@@ -48,3 +48,19 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const PrimaryWithIcon: Story = {
+  args: {
+    variant: 'primary',
+    icon: 'home',
+    children: 'Button',
+  },
+};
+
+export const SecondaryWithIcon: Story = {
+  args: {
+    variant: 'secondary',
+    icon: 'home',
+    children: 'Button',
+  },
+};
