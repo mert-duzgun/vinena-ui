@@ -1,6 +1,6 @@
 # Vinena UI
 
-Vinena UI is a React UI library that provides ready-to-use components for your next project. This project is mainly created for learning purposes. It is not intended to be used in production. All the work is done in my free time. I am not a designer, so the components may not look great. I am open to any kind of feedback.
+Vinena UI is a React UI library that provides ready-to-use components for your next project. This is an experimental project. It will be improved over time into a complete design system with React implementations. Any given feedback about the design or the code is appreciated. All available contact information can be found on my [website](https://duzgun.dev#contact).
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/277fae32-7ab1-4f01-8351-12f549d5106c/deploy-status)](https://app.netlify.com/sites/vinena-ui/deploys)
 
@@ -11,6 +11,17 @@ Vinena UI is a React UI library that provides ready-to-use components for your n
 [Examples](https://vinena-ui.netlify.app/)
 
 [Storybook](https://vinena-ui-storybook.vercel.app/)
+
+## Tech Stack
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [Vitest](https://vitest.dev)
+- [Storybook](https://storybook.js.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 ## Project setup
 
@@ -71,7 +82,7 @@ Format the code using Prettier and try to fix linting errors.
 
 Run the tests using the default test runner.
 
-### `yarn coverage`
+### `yarn test:coverage`
 
 Run the tests with coverage report.
 
@@ -79,7 +90,7 @@ Run the tests with coverage report.
 
 Launches the Storybook UI server.
 
-### `yarn build-storybook`
+### `yarn storybook:build`
 
 Builds the Storybook UI for production.
 
