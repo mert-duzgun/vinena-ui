@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "type-check": "tsc",
+    "type-check": "tsc --noEmit",
     "lint:check": "eslint ./src --ext .jsx,.js,.ts,.tsx",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix",
     "format:check": "prettier --loglevel warn \"./**/*.{js,jsx,ts,tsx,json}\"",
@@ -24,6 +24,7 @@
     "**/*.(ts|tsx|js)": "yarn code:check"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
     "clsx": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +32,7 @@
     "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.6",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
