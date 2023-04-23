@@ -1,3 +1,5 @@
+import { rem } from './utils';
+
 export const DEFAULT_THEME = {
   colors: {
     transparent: 'transparent',
@@ -74,6 +76,61 @@ export const DEFAULT_THEME = {
       700: '#AB091E',
       800: '#8A041A',
       900: '#610316',
+    },
+  },
+  fonts: {
+    h1: {
+      fontSize: rem(72),
+      lineHeight: '110%',
+      letterSpacing: '-0.02em',
+      fontWeight: 800,
+    },
+    h2: {
+      fontSize: rem(48),
+      lineHeight: '110%',
+      letterSpacing: '-0.01em',
+      fontWeight: 700,
+    },
+    h3: {
+      fontSize: rem(32),
+      lineHeight: '110%',
+      fontWeight: 400,
+    },
+    h4: {
+      fontSize: rem(24),
+      lineHeight: '150%',
+      fontWeight: 400,
+    },
+    eyebrow: {
+      fontSize: rem(18),
+      lineHeight: '150%',
+      letterSpacing: '0.04em',
+      fontWeight: 400,
+      textTransform: 'uppercase',
+    },
+    p1: {
+      fontSize: rem(18),
+      lineHeight: '150%',
+      letterSpacing: '0.02em',
+      fontWeight: 400,
+    },
+    p2: {
+      fontSize: rem(16),
+      lineHeight: '150%',
+      letterSpacing: '0.02em',
+      fontWeight: 400,
+    },
+    p3: {
+      fontSize: rem(14),
+      lineHeight: '150%',
+      letterSpacing: '0.02em',
+      fontWeight: 400,
+    },
+    p4: {
+      fontSize: rem(12),
+      lineHeight: '150%',
+      letterSpacing: '0.02em',
+      fontWeight: 400,
     },
   },
 };
