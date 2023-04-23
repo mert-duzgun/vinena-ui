@@ -1,33 +1,44 @@
 import { useTheme } from '@emotion/react';
 import { Box } from 'components/Box';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import * as React from 'react';
+import { PolymorphicComponentProp } from 'types';
 
 import useStyles from './Button.styles';
 
-export interface ButtonProps {
-  className?: string;
-  priority?: 'primary' | 'secondary' | 'tertiary';
-  variant?: 'default' | 'negative';
-  as?: 'button' | 'a';
-  size?: 'small' | 'default' | 'large';
-}
+export type ButtonProps<C extends React.ElementType> = PolymorphicComponentProp<
+  C,
+  {
+    className?: string;
+    priority?: 'primary' | 'secondary' | 'tertiary';
+    negative?: boolean;
+    disabled?: boolean;
+    size?: 'small' | 'default' | 'large';
+    component?: 'a' | 'button';
+  }
+>;
 
-export const Button = ({
+export const Button = <C extends React.ElementType = 'button'>({
   children,
   className,
   priority = 'primary',
-  variant = 'default',
-  as = 'button',
+  negative = false,
+  disabled = false,
   size = 'default',
+  component = 'button',
   ...rest
-}: ButtonProps &
-  ButtonHTMLAttributes<HTMLButtonElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>) => {
+}: ButtonProps<C>) => {
   const theme = useTheme();
-  const css = useStyles(theme, { priority, variant, size });
+  const css = useStyles(theme, { priority, negative, size, disabled });
 
   return (
-    <Box as={as} className={className} css={css.root} {...rest}>
+    <Box
+      as={component}
+      className={className}
+      css={css.root}
+      data-negative={negative}
+      disabled={disabled}
+      {...rest}
+    >
       <span>{children}</span>
     </Box>
   );

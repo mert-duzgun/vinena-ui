@@ -27,6 +27,13 @@ export const Secondary: Story = {
   },
 };
 
+export const Tertiary: Story = {
+  args: {
+    priority: 'tertiary',
+    children: 'Button',
+  },
+};
+
 export const Large: Story = {
   args: {
     size: 'large',
@@ -49,18 +56,34 @@ export const Disabled: Story = {
   },
 };
 
-export const PrimaryWithIcon: Story = {
+export const SecondaryDisabled: Story = {
   args: {
-    priority: 'primary',
-
+    priority: 'secondary',
     children: 'Button',
+    disabled: true,
   },
 };
 
-export const SecondaryWithIcon: Story = {
+export const TertiaryDisabled: Story = {
+  args: {
+    priority: 'tertiary',
+    children: 'Button',
+    disabled: true,
+  },
+};
+
+export const Negative: Story = {
+  args: {
+    priority: 'primary',
+    children: 'Button',
+    negative: true,
+  },
+};
+
+export const SecondaryNegative: Story = {
   args: {
     priority: 'secondary',
-
     children: 'Button',
+    negative: true,
   },
 };

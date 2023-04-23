@@ -1,50 +1,178 @@
+import * as React from 'react';
 import { px, rem, VinenaTheme } from 'theme';
 
 import { ButtonProps } from './Button';
 
-type Props = Required<ButtonProps>;
-
-const sizes: Record<Props['size'], { fontSize: string; padding: string; height: string }> = {
+const sizes = {
   small: {
-    fontSize: rem(14),
-    padding: `${rem(4)} ${rem(16)}`,
     height: rem(32),
+    paddingTop: rem(4),
+    paddingRight: rem(16),
+    paddingBottom: rem(4),
+    paddingLeft: rem(16),
   },
   default: {
-    fontSize: rem(16),
-    padding: `${rem(4)} ${rem(16)}`,
     height: rem(40),
+    paddingTop: rem(4),
+    paddingRight: rem(16),
+    paddingBottom: rem(4),
+    paddingLeft: rem(16),
   },
   large: {
-    fontSize: rem(18),
-    padding: `${rem(4)} ${rem(24)}`,
     height: rem(48),
+    paddingTop: rem(4),
+    paddingRight: rem(24),
+    paddingBottom: rem(4),
+    paddingLeft: rem(24),
   },
 };
 
-export default function createStyles(theme: VinenaTheme, props: ButtonProps) {
+const getFonts = (theme: VinenaTheme) => {
   return {
-    root: {
-      ...sizes[props.size || 'default'],
-      minHeight: rem(32),
+    small: theme.fonts.p3,
+    default: theme.fonts.p2,
+    large: theme.fonts.p1,
+  };
+};
+
+const getPriorityStyles = (theme: VinenaTheme) => {
+  return {
+    primary: {
       backgroundColor: theme.colors.primary[500],
+      borderColor: theme.colors.primary[500],
       color: theme.colors.white,
-      borderRadius: px(100),
-      border: 'none',
-      cursor: 'pointer',
-      transition: 'background-color 0.2s',
 
       '&:hover': {
         backgroundColor: theme.colors.primary[300],
+        borderColor: theme.colors.primary[300],
       },
 
-      '&:focus': {
-        outline: 'none',
+      '&:active': {
         backgroundColor: theme.colors.primary[700],
+        borderColor: theme.colors.primary[700],
       },
 
       '&:disabled': {
         backgroundColor: theme.colors.grayscale[300],
+        borderColor: theme.colors.grayscale[300],
+      },
+
+      '&[data-negative="true"]': {
+        backgroundColor: theme.colors.danger[500],
+        borderColor: theme.colors.danger[500],
+
+        '&:hover': {
+          backgroundColor: theme.colors.danger[400],
+          borderColor: theme.colors.danger[400],
+        },
+
+        '&:active': {
+          backgroundColor: theme.colors.danger[700],
+          borderColor: theme.colors.danger[700],
+        },
+
+        '&:disabled': {
+          backgroundColor: theme.colors.grayscale[400],
+          borderColor: theme.colors.grayscale[400],
+        },
+      },
+    },
+    secondary: {
+      backgroundColor: theme.colors.white,
+      borderColor: theme.colors.primary[500],
+      color: theme.colors.primary[500],
+
+      '&:hover': {
+        backgroundColor: theme.colors.primary[50],
+        borderColor: theme.colors.primary[500],
+      },
+
+      '&:active': {
+        backgroundColor: theme.colors.primary[100],
+        borderColor: theme.colors.primary[700],
+      },
+
+      '&:disabled': {
+        backgroundColor: theme.colors.white,
+        borderColor: theme.colors.grayscale[300],
+        color: theme.colors.grayscale[300],
+      },
+
+      '&[data-negative="true"]': {
+        backgroundColor: theme.colors.white,
+        borderColor: theme.colors.danger[500],
+        color: theme.colors.danger[500],
+
+        '&:hover': {
+          backgroundColor: theme.colors.danger[50],
+          borderColor: theme.colors.danger[500],
+        },
+
+        '&:active': {
+          backgroundColor: theme.colors.danger[100],
+          borderColor: theme.colors.danger[700],
+        },
+
+        '&:disabled': {
+          backgroundColor: theme.colors.white,
+          borderColor: theme.colors.grayscale[400],
+          color: theme.colors.grayscale[400],
+        },
+      },
+    },
+    tertiary: {
+      backgroundColor: theme.colors.white,
+      borderColor: theme.colors.transparent,
+      color: theme.colors.primary[500],
+      textDecoration: 'underline',
+
+      '&:hover': {
+        backgroundColor: theme.colors.primary[50],
+        borderColor: theme.colors.primary[50],
+      },
+
+      '&:active': {
+        backgroundColor: theme.colors.primary[100],
+        borderColor: theme.colors.primary[100],
+        color: theme.colors.primary[700],
+      },
+
+      '&:disabled': {
+        backgroundColor: theme.colors.white,
+        borderColor: theme.colors.white,
+        color: theme.colors.grayscale[300],
+      },
+
+      // No negative variant for tertiary because a destructive action should be at least secondary
+    },
+  };
+};
+
+export default function createStyles(theme: VinenaTheme, props: ButtonProps<React.ElementType>) {
+  return {
+    root: {
+      minHeight: rem(32),
+      borderRadius: px(9999),
+      cursor: props.disabled ? 'not-allowed' : 'pointer',
+      transition: 'all 0.2s',
+      borderWidth: px(1),
+      borderStyle: 'solid',
+      display: 'inline-flex',
+      alignItems: 'center',
+      fontFamily: 'Inter, sans-serif',
+      textDecoration: 'none',
+      ...sizes[props.size || 'default'],
+      ...getFonts(theme)[props.size || 'default'],
+      ...getPriorityStyles(theme)[props.priority || 'primary'],
+
+      '&:focus-visible': {
+        outlineStyle: 'solid',
+        outlineWidth: px(2),
+        outlineOffset: px(2),
+        outlineColor:
+          props.negative && props.priority !== 'tertiary'
+            ? theme.colors.danger[700]
+            : theme.colors.primary[300],
       },
     },
   };
