@@ -16,7 +16,7 @@ Vinena UI is a React UI library that provides ready-to-use components for your n
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Emotion](https://emotion.sh/)
 - [Vite](https://vitejs.dev/)
 - [Vitest](https://vitest.dev)
 - [Storybook](https://storybook.js.org/)
