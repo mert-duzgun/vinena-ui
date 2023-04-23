@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Icon > should render the arrow down icon 1`] = `
+exports[`Vinena/components/Icon > should render the arrow down icon 1`] = `
 <span
   data-testid="icon-container"
 >
