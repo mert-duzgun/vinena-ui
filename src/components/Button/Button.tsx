@@ -1,71 +1,34 @@
-import clsx from 'clsx';
-import { Icon } from 'components';
+import { useTheme } from '@emotion/react';
+import { Box } from 'components/Box';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps {
-  variant?: 'primary' | 'secondary';
+import useStyles from './Button.styles';
+
+export interface ButtonProps {
+  className?: string;
+  priority?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'default' | 'negative';
   as?: 'button' | 'a';
   size?: 'small' | 'default' | 'large';
-  className?: string;
-  icon?: string;
 }
 
 export const Button = ({
   children,
   className,
-  variant = 'primary',
+  priority = 'primary',
+  variant = 'default',
   as = 'button',
   size = 'default',
-  icon,
   ...rest
 }: ButtonProps &
   ButtonHTMLAttributes<HTMLButtonElement> &
   AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  let baseStyle, textSize, iconStyle;
-  switch (size) {
-    case 'small':
-      baseStyle = 'px-4 py-2';
-      textSize = 'text-paragraph-3';
-      iconStyle = 'text-[16px]';
-      break;
-    case 'large':
-      baseStyle = 'px-4 py-3.5';
-      textSize = 'text-paragraph-1';
-      iconStyle = 'text-[24px]';
-      break;
-    default:
-      baseStyle = 'px-4 py-3';
-      textSize = 'text-paragraph-2';
-      iconStyle = 'text-[20px]';
-  }
-  const baseStyleClasses = `${baseStyle} inline-flex items-center border transition rounded focus:outline-none focus:ring-[3px] focus:ring-primary-300`;
-  let colorStyle;
-  switch (variant) {
-    case 'primary':
-      colorStyle =
-        'text-white bg-primary-500 border-primary-500 hover:bg-primary-700 hover:border-primary-700 disabled:bg-grayscale-300 disabled:border-grayscale-300';
-      break;
-    case 'secondary':
-      colorStyle =
-        'text-primary-500 bg-transparent border-primary-500 hover:bg-primary-50 disabled:text-grayscale-300 disabled:border-grayscale-300 disabled:bg-transparent';
-      break;
-  }
+  const theme = useTheme();
+  const css = useStyles(theme, { priority, variant, size });
 
-  const classes = clsx(baseStyleClasses, textSize, colorStyle, className);
-
-  if (as === 'a') {
-    return (
-      <a className={clsx(classes, 'cursor-pointer')} {...rest}>
-        {icon ? <Icon name={icon} className={iconStyle} /> : null}
-        <span className={clsx({ 'ml-[10px]': icon })}>{children}</span>
-      </a>
-    );
-  } else {
-    return (
-      <button className={classes} type="button" {...rest}>
-        {icon ? <Icon name={icon} className={iconStyle} /> : null}
-        <span className={clsx({ 'ml-[10px]': icon })}>{children}</span>
-      </button>
-    );
-  }
+  return (
+    <Box as={as} className={className} css={css.root} {...rest}>
+      <span>{children}</span>
+    </Box>
+  );
 };

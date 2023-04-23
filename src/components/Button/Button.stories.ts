@@ -15,14 +15,14 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    variant: 'primary',
+    priority: 'primary',
     children: 'Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
+    priority: 'secondary',
     children: 'Button',
   },
 };
@@ -43,7 +43,7 @@ export const Small: Story = {
 
 export const Disabled: Story = {
   args: {
-    variant: 'primary',
+    priority: 'primary',
     children: 'Button',
     disabled: true,
   },
@@ -51,16 +51,16 @@ export const Disabled: Story = {
 
 export const PrimaryWithIcon: Story = {
   args: {
-    variant: 'primary',
-    icon: 'home',
+    priority: 'primary',
+
     children: 'Button',
   },
 };
 
 export const SecondaryWithIcon: Story = {
   args: {
-    variant: 'secondary',
-    icon: 'home',
+    priority: 'secondary',
+
     children: 'Button',
   },
 };

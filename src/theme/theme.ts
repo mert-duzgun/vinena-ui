@@ -1,4 +1,4 @@
-export const theme = {
+export const DEFAULT_THEME = {
   colors: {
     transparent: 'transparent',
     white: '#FFFFFF',
@@ -78,4 +78,4 @@ export const theme = {
   },
 };
 
-export type VinenaTheme = typeof theme;
+export type VinenaTheme = typeof DEFAULT_THEME;
