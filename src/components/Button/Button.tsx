@@ -8,22 +8,15 @@ import useStyles from './Button.styles';
 
 export type ButtonProps<C extends React.ElementType> = PolymorphicComponentProp<
   C,
-  | {
-      priority?: 'primary' | 'secondary' | 'tertiary';
-      size?: 'small' | 'default' | 'large';
-      negative?: boolean;
-      disabled?: boolean;
-      className?: string;
-    } & (
-      | {
-          leftIcon?: IconName;
-          rightIcon?: never;
-        }
-      | {
-          leftIcon?: never;
-          rightIcon?: IconName;
-        }
-    )
+  {
+    priority?: 'primary' | 'secondary' | 'tertiary';
+    size?: 'small' | 'default' | 'large';
+    negative?: boolean;
+    disabled?: boolean;
+    className?: string;
+    leftIcon?: IconName;
+    rightIcon?: IconName;
+  }
 >;
 
 export const Button = <C extends React.ElementType = 'button'>({
@@ -58,7 +51,7 @@ export const Button = <C extends React.ElementType = 'button'>({
       {...rest}
     >
       {leftIcon ? <Icon testId="button-left-icon" name={leftIcon} css={css.icon} /> : null}
-      {children ? <span>{children}</span> : null}
+      {children ? <span data-testid="button-content">{children}</span> : null}
       {/* Render only leftIcon if both icons are present */}
       {!leftIcon && rightIcon ? (
         <Icon testId="button-right-icon" name={rightIcon} css={css.icon} />
