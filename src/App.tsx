@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
+import VinenaLogo from 'assets/vinena.svg';
 import { Button } from 'components';
 import { DEFAULT_THEME, GlobalStyles, rem } from 'theme';
 
@@ -6,7 +7,10 @@ function App() {
   return (
     <ThemeProvider theme={DEFAULT_THEME}>
       <div css={{ padding: rem(16) }}>
-        <h1>Vinena UI</h1>
+        <div css={{ display: 'flex', gap: rem(16) }}>
+          <img width={48} src={VinenaLogo} alt="" />
+          <h1>Vinena UI</h1>
+        </div>
         <div css={{ display: 'flex', gap: rem(32), flexWrap: 'wrap' }}>
           <div css={{ display: 'flex', flexDirection: 'column' }}>
             <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
