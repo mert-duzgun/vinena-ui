@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Vinena/components/Icon > should match snapshot 1`] = `
-<span
+<div
+  class="css-9s69v7-Icon"
   data-testid="icon-container"
 >
   <svg
@@ -17,5 +18,5 @@ exports[`Vinena/components/Icon > should match snapshot 1`] = `
       fill-rule="evenodd"
     />
   </svg>
-</span>
+</div>
 `;
