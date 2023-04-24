@@ -1,7 +1,4 @@
-import * as React from 'react';
 import { px, rem, VinenaTheme } from 'theme';
-
-import { ButtonProps } from './Button';
 
 const sizes = {
   small: {
@@ -148,7 +145,14 @@ const getPriorityStyles = (theme: VinenaTheme) => {
   };
 };
 
-export default function createStyles(theme: VinenaTheme, props: ButtonProps<React.ElementType>) {
+export interface ButtonStylesParams {
+  priority: 'primary' | 'secondary' | 'tertiary';
+  size: 'small' | 'default' | 'large';
+  negative: boolean;
+  disabled: boolean;
+}
+
+export default function createStyles(theme: VinenaTheme, props: ButtonStylesParams) {
   return {
     root: {
       minHeight: rem(32),
@@ -161,9 +165,9 @@ export default function createStyles(theme: VinenaTheme, props: ButtonProps<Reac
       alignItems: 'center',
       fontFamily: 'Inter, sans-serif',
       textDecoration: 'none',
-      ...sizes[props.size || 'default'],
-      ...getFonts(theme)[props.size || 'default'],
-      ...getPriorityStyles(theme)[props.priority || 'primary'],
+      ...sizes[props.size],
+      ...getFonts(theme)[props.size],
+      ...getPriorityStyles(theme)[props.priority],
 
       '&:focus-visible': {
         outlineStyle: 'solid',
