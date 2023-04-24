@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Box } from './Box';
 
-describe('Box', () => {
+describe('Vinena/components/Box', () => {
   it('should match snapshot', async () => {
     const { container } = render(<Box>Test</Box>);
     await expect(container.firstChild).toMatchSnapshot();
