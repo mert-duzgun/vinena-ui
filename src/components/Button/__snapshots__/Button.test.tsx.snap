@@ -1,11 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Button > should match snapshot 1`] = `
+exports[`Vinena/components/Button > should match snapshot 1`] = `
 <button
-  class="css-1iwb2b9-Button"
+  class="css-wml3dk-Button"
   data-negative="false"
 >
-  <span>
+  <span
+    data-testid="button-content"
+  >
     Click me!
   </span>
 </button>
