@@ -3,7 +3,7 @@ import { getByTestId, render } from '@testing-library/react';
 import { Icon } from './Icon';
 
 describe('Vinena/components/Icon', () => {
-  it('should render the arrow down icon', async () => {
+  it('should match snapshot', async () => {
     const { container } = render(<Icon name="arrowDown" />);
     await expect(container.firstChild).toMatchSnapshot();
   });
