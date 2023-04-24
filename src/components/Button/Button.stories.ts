@@ -87,3 +87,44 @@ export const SecondaryNegative: Story = {
     negative: true,
   },
 };
+
+export const NegativeDisabled: Story = {
+  args: {
+    priority: 'primary',
+    children: 'Button',
+    negative: true,
+    disabled: true,
+  },
+};
+
+export const SecondaryNegativeDisabled: Story = {
+  args: {
+    priority: 'secondary',
+    children: 'Button',
+    negative: true,
+    disabled: true,
+  },
+};
+
+export const WithLeftIcon: Story = {
+  args: {
+    priority: 'primary',
+    children: 'Button',
+    leftIcon: 'home',
+  },
+};
+
+export const WithRightIcon: Story = {
+  args: {
+    priority: 'primary',
+    children: 'Button',
+    rightIcon: 'home',
+  },
+};
+
+export const WithJustIcon: Story = {
+  args: {
+    priority: 'primary',
+    rightIcon: 'home',
+  },
+};
