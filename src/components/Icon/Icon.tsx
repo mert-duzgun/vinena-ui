@@ -1,4 +1,4 @@
-import React from 'react';
+import { Box } from 'components';
 
 import {
   ArrowDownIcon,
@@ -35,13 +35,53 @@ import {
   TextAlignRightIcon,
 } from '.';
 
-interface IconProps {
-  name: string;
+/*
+TODO: IconName type should be generated from the iconMap using 'keyof typeof iconMap'
+It's not possible to do this at the moment because of how SVGR generates the icons on the runtime
+*/
+
+export type IconName =
+  | 'arrowDown'
+  | 'arrowLeft'
+  | 'arrowRight'
+  | 'arrowUp'
+  | 'calendar'
+  | 'cancel'
+  | 'check'
+  | 'clock'
+  | 'delete'
+  | 'download'
+  | 'eye'
+  | 'favourites'
+  | 'file'
+  | 'folder'
+  | 'heart'
+  | 'home'
+  | 'image'
+  | 'info'
+  | 'link'
+  | 'mail'
+  | 'more'
+  | 'moreVertical'
+  | 'noEye'
+  | 'paperclip'
+  | 'paperPlane'
+  | 'pencil'
+  | 'search'
+  | 'share'
+  | 'textAlignCenter'
+  | 'textAlignJustified'
+  | 'textAlignLeft'
+  | 'textAlignRight';
+
+export interface IconProps {
+  name: IconName;
   className?: string;
+  testId?: string;
 }
 
-export const Icon = ({ name, className }: IconProps) => {
-  const iconMap: { [key: string]: React.ReactElement } = {
+export const Icon = ({ name, className, testId }: IconProps) => {
+  const iconMap = {
     arrowDown: <ArrowDownIcon />,
     arrowLeft: <ArrowLeftIcon />,
     arrowRight: <ArrowRightIcon />,
@@ -79,8 +119,12 @@ export const Icon = ({ name, className }: IconProps) => {
   const icon = iconMap[name];
 
   return (
-    <span data-testid="icon-container" className={className}>
+    <Box
+      data-testid={testId || 'icon-container'}
+      css={{ display: 'inline-flex' }}
+      className={className}
+    >
       {icon}
-    </span>
+    </Box>
   );
 };
