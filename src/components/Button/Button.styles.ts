@@ -1,27 +1,92 @@
+import * as React from 'react';
 import { px, rem, VinenaTheme } from 'theme';
 
-const sizes = {
-  small: {
-    height: rem(32),
-    paddingTop: rem(4),
-    paddingRight: rem(16),
-    paddingBottom: rem(4),
-    paddingLeft: rem(16),
-  },
-  default: {
-    height: rem(40),
-    paddingTop: rem(4),
-    paddingRight: rem(16),
-    paddingBottom: rem(4),
-    paddingLeft: rem(16),
-  },
-  large: {
-    height: rem(48),
-    paddingTop: rem(4),
-    paddingRight: rem(24),
-    paddingBottom: rem(4),
-    paddingLeft: rem(24),
-  },
+const iconSizes = {
+  small: rem(16),
+  default: rem(18),
+  large: rem(20),
+};
+
+const getVerticalPadding = (
+  props: ButtonStylesParams,
+  side: 'left' | 'right',
+  { initial, reduced }: { initial: string; reduced: string }
+): string => {
+  // Reduce the both sides padding if only there is no children
+  if (!props.children) {
+    return rem(4);
+  }
+
+  // If both icons are provided, only left side is rendered
+  if (props.leftIcon && props.rightIcon && side === 'left') {
+    return reduced;
+  }
+
+  if (props.leftIcon && props.rightIcon && side === 'right') {
+    return initial;
+  }
+
+  if (props.leftIcon && side === 'left') {
+    return reduced;
+  }
+
+  if (props.rightIcon && side === 'right') {
+    return reduced;
+  }
+
+  return initial;
+};
+
+const getButtonSizes = (props: ButtonStylesParams) => {
+  const verticalPadding = rem(4);
+
+  const horizontalPaddings = {
+    small: {
+      initial: rem(16),
+      reduced: rem(12),
+    },
+    default: {
+      initial: rem(16),
+      reduced: rem(12),
+    },
+    large: {
+      initial: rem(24),
+      reduced: rem(16),
+    },
+  };
+
+  const heights = {
+    small: rem(32),
+    default: rem(40),
+    large: rem(48),
+  };
+
+  return {
+    small: {
+      height: heights.small,
+      width: props.children ? 'auto' : heights.small,
+      paddingTop: verticalPadding,
+      paddingRight: getVerticalPadding(props, 'right', horizontalPaddings.small),
+      paddingBottom: verticalPadding,
+      paddingLeft: getVerticalPadding(props, 'left', horizontalPaddings.small),
+    },
+    default: {
+      height: heights.default,
+      width: props.children ? 'auto' : heights.default,
+      paddingTop: verticalPadding,
+      paddingRight: getVerticalPadding(props, 'right', horizontalPaddings.default),
+      paddingBottom: verticalPadding,
+      paddingLeft: getVerticalPadding(props, 'left', horizontalPaddings.default),
+    },
+    large: {
+      height: heights.large,
+      width: props.children ? 'auto' : heights.large,
+      paddingTop: verticalPadding,
+      paddingRight: getVerticalPadding(props, 'right', horizontalPaddings.large),
+      paddingBottom: verticalPadding,
+      paddingLeft: getVerticalPadding(props, 'left', horizontalPaddings.large),
+    },
+  };
 };
 
 const getFonts = (theme: VinenaTheme) => {
@@ -150,6 +215,9 @@ export interface ButtonStylesParams {
   size: 'small' | 'default' | 'large';
   negative: boolean;
   disabled: boolean;
+  leftIcon?: string;
+  rightIcon?: string;
+  children?: React.ReactNode;
 }
 
 export default function createStyles(theme: VinenaTheme, props: ButtonStylesParams) {
@@ -162,10 +230,12 @@ export default function createStyles(theme: VinenaTheme, props: ButtonStylesPara
       borderWidth: px(1),
       borderStyle: 'solid',
       display: 'inline-flex',
+      gap: rem(8),
       alignItems: 'center',
+      justifyContent: 'center',
       fontFamily: 'Inter, sans-serif',
       textDecoration: 'none',
-      ...sizes[props.size],
+      ...getButtonSizes(props)[props.size],
       ...getFonts(theme)[props.size],
       ...getPriorityStyles(theme)[props.priority],
 
@@ -178,6 +248,9 @@ export default function createStyles(theme: VinenaTheme, props: ButtonStylesPara
             ? theme.colors.danger[700]
             : theme.colors.primary[300],
       },
+    },
+    icon: {
+      fontSize: iconSizes[props.size],
     },
   };
 }
