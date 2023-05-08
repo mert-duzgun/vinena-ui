@@ -2,13 +2,9 @@
 
 Vinena UI is a React UI library that provides ready-to-use components for your next project. This is an experimental project. It will be improved over time into a complete design system with React implementations. Any given feedback about the design or the code is appreciated. All available contact information can be found on my [website](https://duzgun.dev#contact).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/277fae32-7ab1-4f01-8351-12f549d5106c/deploy-status)](https://app.netlify.com/sites/vinena-ui/deploys)
-
 ![Vercel](https://vercelbadge.vercel.app/api/mert-duzgun/vinena-ui)
 
 [Figma](https://www.figma.com/file/zxtzS9qnQXPN2PHs6Q76vN/Vinena-UI)
-
-[Examples](https://vinena-ui.netlify.app/)
 
 [Storybook](https://vinena-ui-storybook.vercel.app/)
 
