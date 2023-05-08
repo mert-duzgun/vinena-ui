@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@emotion/react';
 import VinenaLogo from 'assets/vinena.svg';
-import { Button } from 'components';
+import { Button, TextInput } from 'components';
 import { DEFAULT_THEME, GlobalStyles, rem } from 'theme';
 
 function App() {
@@ -11,6 +11,85 @@ function App() {
           <img width={48} src={VinenaLogo} alt="" />
           <h1>Vinena UI</h1>
         </div>
+        <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
+          <TextInput placeholder="Placeholder" leftIcon="search" rightIcon="arrowRight" />
+          <TextInput
+            placeholder="Placeholder"
+            label="Label"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            placeholder="Placeholder"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            placeholder="Placeholder"
+            label="Label"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+        </div>
+        <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
+          <TextInput error placeholder="Placeholder" leftIcon="search" rightIcon="arrowRight" />
+          <TextInput
+            error
+            placeholder="Placeholder"
+            label="Label"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            error
+            placeholder="Placeholder"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            error
+            placeholder="Placeholder"
+            label="Label"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+        </div>
+        <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
+          <TextInput disabled placeholder="Placeholder" leftIcon="search" rightIcon="arrowRight" />
+          <TextInput
+            disabled
+            placeholder="Placeholder"
+            label="Label"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            disabled
+            placeholder="Placeholder"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+          <TextInput
+            disabled
+            placeholder="Placeholder"
+            label="Label"
+            helperText="Helper Text"
+            leftIcon="search"
+            rightIcon="arrowRight"
+          />
+        </div>
+        <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
+          <TextInput placeholder="Placeholder" />
+          <TextInput placeholder="Placeholder" label="Label" />
+          <TextInput placeholder="Placeholder" helperText="Helper Text" />
+          <TextInput placeholder="Placeholder" label="Label" helperText="Helper Text" />
+        </div>
+
         <div css={{ display: 'flex', gap: rem(32), flexWrap: 'wrap' }}>
           <div css={{ display: 'flex', flexDirection: 'column' }}>
             <div css={{ display: 'flex', gap: rem(32), marginTop: rem(16) }}>
