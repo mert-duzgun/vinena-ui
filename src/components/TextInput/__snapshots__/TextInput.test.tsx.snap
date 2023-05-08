@@ -2,10 +2,10 @@
 
 exports[`Vinena/components/TextInput > should match snapshot 1`] = `
 <div
-  class="css-167j6s7-TextInput"
+  class="css-o4lh5y-TextInput"
 >
   <div
-    class="css-7117jv-TextInput"
+    class="css-1db88qa-TextInput"
   >
     <input
       class="css-rrm5su-TextInput"
