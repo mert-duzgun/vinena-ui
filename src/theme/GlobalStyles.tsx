@@ -1,3 +1,4 @@
+/* c8 ignore start */
 import { css, Global } from '@emotion/react';
 
 const styles = css`
