@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Vinena/components/TextInput > should match snapshot 1`] = `
+<div
+  class="css-167j6s7-TextInput"
+>
+  <div
+    class="css-7117jv-TextInput"
+  >
+    <input
+      class="css-rrm5su-TextInput"
+      data-error="false"
+      placeholder="Placeholder"
+    />
+  </div>
+</div>
+`;
