@@ -51,7 +51,11 @@ export const Button = <C extends React.ElementType = 'button'>({
       {...rest}
     >
       {leftIcon ? <Icon testId="button-left-icon" name={leftIcon} css={css.icon} /> : null}
-      {children ? <span data-testid="button-content">{children}</span> : null}
+      {children ? (
+        <Box as={'span'} data-testid="button-content">
+          {children}
+        </Box>
+      ) : null}
       {/* Render only leftIcon if both icons are present */}
       {!leftIcon && rightIcon ? (
         <Icon testId="button-right-icon" name={rightIcon} css={css.icon} />
