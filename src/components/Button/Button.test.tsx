@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@emotion/react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { DEFAULT_THEME, rem } from 'theme';
 import { vitest } from 'vitest';
 
@@ -40,7 +41,7 @@ describe('Vinena/components/Button', () => {
     );
   });
 
-  it('calls onClick handler when clicked', () => {
+  it('calls onClick handler when clicked', async () => {
     const handleClick = vitest.fn();
     render(
       <ThemeProvider theme={DEFAULT_THEME}>
@@ -48,7 +49,7 @@ describe('Vinena/components/Button', () => {
       </ThemeProvider>
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Click me!' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Click me!' }));
     expect(handleClick).toHaveBeenCalled();
   });
 
