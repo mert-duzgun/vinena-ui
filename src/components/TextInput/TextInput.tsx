@@ -9,6 +9,7 @@ export type TextInputProps<C extends React.ElementType> = PolymorphicComponentPr
   C,
   {
     label?: string;
+    id?: string;
     helperText?: string;
     disabled?: boolean;
     error?: boolean;
@@ -19,6 +20,7 @@ export type TextInputProps<C extends React.ElementType> = PolymorphicComponentPr
 
 export const TextInput = <C extends React.ElementType = 'input'>({
   label,
+  id,
   helperText,
   disabled = false,
   error = false,
@@ -32,14 +34,25 @@ export const TextInput = <C extends React.ElementType = 'input'>({
   return (
     <Box css={css.root}>
       {label ? (
-        <Box css={css.label} as={'label'}>
+        <Box css={css.label} as={'label'} htmlFor={id}>
           {label}
         </Box>
       ) : null}
       <Box css={css.inputWrapper}>
-        {leftIcon ? <Icon testId="button-left-icon" name={leftIcon} css={css.leftIcon} /> : null}
-        <Box as={'input'} css={css.input} disabled={disabled} data-error={error} {...rest} />
-        {rightIcon ? <Icon testId="button-left-icon" name={rightIcon} css={css.rightIcon} /> : null}
+        {leftIcon ? (
+          <Icon testId="text-input-left-icon" name={leftIcon} css={css.leftIcon} />
+        ) : null}
+        <Box
+          as={'input'}
+          id={id}
+          css={css.input}
+          disabled={disabled}
+          data-error={error}
+          {...rest}
+        />
+        {rightIcon ? (
+          <Icon testId="text-input-right-icon" name={rightIcon} css={css.rightIcon} />
+        ) : null}
       </Box>
       {helperText ? <Box css={css.helperText}>{helperText}</Box> : null}
     </Box>
