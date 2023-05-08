@@ -8,7 +8,9 @@ export interface TextInputStylesParams {
 
 export default function createStyles(theme: VinenaTheme, props: TextInputStylesParams) {
   return {
-    root: {},
+    root: {
+      fontFamily: 'Inter, sans-serif',
+    },
     label: {
       ...theme.fonts.p3,
       display: 'block',
@@ -16,6 +18,7 @@ export default function createStyles(theme: VinenaTheme, props: TextInputStylesP
       marginBottom: rem(8),
     },
     inputWrapper: {
+      display: 'inline-block',
       position: 'relative',
     },
     input: {
